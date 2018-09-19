@@ -1,0 +1,12 @@
+{
+  "name": "vaadin-hn",
+  "description": "Hacker News Demo PWA using vaadin components",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@vaadin/vaadin-core": "^10.0.0-pre.3"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  }
+}

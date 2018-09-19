@@ -1,0 +1,7 @@
+{
+  "name": "vaadin-hn",
+  "short_name": "vaadin-hn",
+  "description": "Hacker News Demo PWA using vaadin components",
+  "start_url": "/",
+  "display": "standalone"
+}
