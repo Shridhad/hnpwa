@@ -1,4 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {fetchTopNews} from './data/hn-api';
+import './components/hn-top-news';
 
 /**
  * @customElement
@@ -12,16 +14,16 @@ class VaadinHnApp extends PolymerElement {
           display: block;
         }
       </style>
-      <h2>Hello [[prop1]]!</h2>
+      <hn-top-news news=[[news]]></hn-top-news>
     `;
   }
-  static get properties() {
-    return {
-      prop1: {
-        type: String,
-        value: 'vaadin-hn-app'
-      }
-    };
+
+  ready() {
+    super.ready();
+
+    fetchTopNews()
+      .then(news => this.news = news)
+      .then(_ => console.log(this.news));
   }
 }
 
