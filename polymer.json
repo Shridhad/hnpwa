@@ -1,8 +1,12 @@
 {
   "npm": true,
+  "entrypoint": "index.html",
   "lint": {
     "rules": [
       "polymer-3"
     ]
-  }
+  },
+  "extraDependencies": [
+    "manifest.json"
+  ]
 }
