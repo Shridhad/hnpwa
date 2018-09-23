@@ -2,11 +2,13 @@
   "name": "vaadin-hn",
   "description": "Hacker News Demo PWA using vaadin components",
   "scripts": {
+    "prestart": "polymer build",
     "start": "PORT=3000 serve build/default"
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@vaadin/vaadin-core": "^10.0.0-pre.3",
+    "polymer-cli": "^1.8.0",
     "serve": "^10.0.1"
   },
   "devDependencies": {
