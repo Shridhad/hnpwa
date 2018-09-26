@@ -8,5 +8,8 @@
   },
   "extraDependencies": [
     "manifest.json"
+  ],
+  "builds": [
+    {"preset": "es6-bundled"}
   ]
 }
