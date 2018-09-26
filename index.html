@@ -16,5 +16,13 @@
   </head>
   <body>
     <vaadin-hn-app></vaadin-hn-app>
+
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                 .register('/sw.js', {scope: '/'})
+                 .then(() => console.info("Service Worker Registered"));
+      }
+      </script>
   </body>
 </html>

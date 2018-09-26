@@ -7,7 +7,8 @@
     ]
   },
   "extraDependencies": [
-    "manifest.json"
+    "manifest.json",
+    "sw.js"
   ],
   "builds": [
     {"preset": "es6-bundled"}
