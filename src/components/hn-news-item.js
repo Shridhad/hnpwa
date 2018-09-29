@@ -44,12 +44,16 @@ class HNNewsItem extends PolymerElement {
           </style>
           <span class="index">[[_index(index)]]</span>
           <div class="item-title">
-            <a href="[[item.url]]">[[item.title]]</a>
+            <a href="[[_getUrl(item.url)]]" rel="noopener" target="_blank">[[item.title]]</a>
           </div>
           <div class="item-details">
-            <span class="points">[[item.points]] points</span>
-            <span>by</span>
-            <a href="[[_userProfile(item.user)]]" target="_blank">[[item.user]]</a>
+            <template is="dom-if" if="[[!_isNull(item.points)]]">
+              <span class="points">[[item.points]] points</span>
+            </template>
+            <template is="dom-if" if="[[!_isNull(item.user)]]">
+              <span>by</span>
+              <a href="[[_userProfile(item.user)]]" target="_blank" rel="noopener">[[item.user]]</a>
+            </template>
             <span class="time">[[item.time_ago]]</span>
             <span class="comments">[[item.comments_count]] comments</span>
           </div>
@@ -70,6 +74,14 @@ class HNNewsItem extends PolymerElement {
 
   _userProfile(user) {
       return `https://news.ycombinator.com/user?id=${user}`;
+  }
+
+  _isNull(value) {
+    return value == null;
+  }
+
+  _getUrl(url) {
+    return url.startsWith("item") ? `https://news.ycombinator.com/${url}` : url;
   }
 }
 
