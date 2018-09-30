@@ -1,5 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-grid/vaadin-grid.js';
+import {fetchTopNews} from '../data/hn-api';
 import './hn-news-item';
 
 class HNTopNews extends PolymerElement {
@@ -35,6 +36,15 @@ class HNTopNews extends PolymerElement {
         type: Array
       }
     };
+  }
+
+  ready() {
+    super.ready();
+
+    fetchTopNews()
+      .then(news => this.news = news)
+      .then(_ => console.log("news", this.news))
+      .catch(err => console.error("Error ", err));
   }
 }
 
