@@ -1,9 +1,9 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-grid/vaadin-grid.js';
-import {fetchTopNews} from '../data/hn-api';
+import {fetchItems} from '../data/hn-api';
 import './hn-news-item';
 
-class HNTopNews extends PolymerElement {
+class HNNewsList extends PolymerElement {
   static get template() {
     return html `
           <style>
@@ -20,7 +20,7 @@ class HNTopNews extends PolymerElement {
               border: none;
             }
           </style>
-          <vaadin-grid items="[[news]]">
+          <vaadin-grid items="[[items]]">
             <vaadin-grid-column>
               <template>
                 <hn-news-item item="[[item]]" index="[[index]]"></hn-news-item>
@@ -32,20 +32,22 @@ class HNTopNews extends PolymerElement {
 
   static get properties() {
     return {
-      news: {
+      items: {
         type: Array
       }
     };
   }
 
-  ready() {
-    super.ready();
+  connectedCallback() {
+    super.connectedCallback();
 
-    fetchTopNews()
-      .then(news => this.news = news)
-      .then(_ => console.log("news", this.news))
+    let type = this.location.pathname;
+    type =  type == "/" ? "/news" : type;
+    fetchItems(type)
+      .then(news => this.items = news)
+      .then(_ => console.log("Items", this.items))
       .catch(err => console.error("Error ", err));
   }
 }
 
-window.customElements.define('hn-top-news', HNTopNews);
+window.customElements.define('hn-news-list', HNNewsList);

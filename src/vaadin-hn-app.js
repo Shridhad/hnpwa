@@ -1,5 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import './components/hn-top-news';
+import {Router} from '@vaadin/router';
+import './components/hn-header-view';
+import './components/hn-news-list';
+import './components/hn-item-view';
 
 /**
  * @customElement
@@ -13,8 +16,25 @@ class VaadinHnApp extends PolymerElement {
           display: block;
         }
       </style>
-      <hn-top-news></hn-top-news>
+      <div class="main">
+        <hn-header-view></hn-header-view>
+        <div id="outlet"></div>
+      </div>
     `;
+  }
+
+  ready() {
+    super.ready();
+
+    const outlet = this.$.outlet;
+    const router = new Router(outlet);
+    router.setRoutes([
+      {path: '/', component: 'hn-news-list'},
+      {path: '/show', component: 'hn-news-list'},
+      {path: '/ask', component: 'hn-news-list'},
+      {path: '/item/:id', component: 'hn-item-view'}
+    ])
+
   }
 }
 
