@@ -66,13 +66,16 @@ class HNHeaderView extends PolymerElement {
           <nav class="top-nav">
             <ul class="nav-list">
               <li class="nav-item">
-                <a href="/">New</a>
+                <a href="/new">New</a>
               </li>
               <li class="nav-item">
                 <a href="/show">Show</a>
               </li>
               <li class="nav-item">
                 <a href="/ask">Ask</a>
+              </li>
+              <li class="nav-item">
+                <a href="/jobs">Jobs</a>
               </li>
             </ul>
           </nav>

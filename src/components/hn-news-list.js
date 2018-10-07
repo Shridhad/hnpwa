@@ -41,12 +41,20 @@ class HNNewsList extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
 
-    let type = this.location.pathname;
-    type =  type == "/" ? "/news" : type;
+    let type =  this.getType(this.location.pathname);
     fetchItems(type)
       .then(news => this.items = news)
       .then(_ => console.log("Items", this.items))
       .catch(err => console.error("Error ", err));
+  }
+
+  getType(type) {
+    switch (type) {
+      case "/new" : return "/newest";
+      case "/top" : 
+      case  "/"   : return "/news";
+      default     : return type;
+    }
   }
 }
 

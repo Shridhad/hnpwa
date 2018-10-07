@@ -30,8 +30,10 @@ class VaadinHnApp extends PolymerElement {
     const router = new Router(outlet);
     router.setRoutes([
       {path: '/', component: 'hn-news-list'},
+      {path: '/new', component: 'hn-news-list'},
       {path: '/show', component: 'hn-news-list'},
       {path: '/ask', component: 'hn-news-list'},
+      {path: '/jobs', component: 'hn-news-list'},
       {path: '/item/:id', component: 'hn-item-view'}
     ])
 
