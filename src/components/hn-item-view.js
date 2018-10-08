@@ -1,5 +1,8 @@
 
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {fetchItems} from '../data/hn-api';
+import './hn-news-item';
+import './hn-comment';
 
 class HNItemView extends PolymerElement {
   static get template() {
@@ -7,9 +10,23 @@ class HNItemView extends PolymerElement {
           <style>
             :host {
               display: block;
+              padding-top: 1rem;
+            }
+
+            hn-news-item,
+            .comments {
+              padding-left: 1rem;
+              padding-right: 0.5rem;
             }
           </style>
-          <h2>Item View</h2>
+          <div class="item-detail-view">
+            <hn-news-item item="[[item]]" hide-index></hn-news-item>
+            <div class="comments">
+              <template is="dom-repeat" items="[[item.comments]]">
+                <hn-comment comment="[[item]]"></hn-comment>  
+              </template>
+            </div>
+          </div>
         `;
   }
 
@@ -22,7 +39,10 @@ class HNItemView extends PolymerElement {
   }
 
   onBeforeEnter(location, commands, router) {
-      console.log("location ", location);
+    fetchItems(location.pathname)
+    .then(item => this.item = item)
+    .then(_ => console.log("Item", this.item))
+    .catch(err => console.error("Error ", err));
   }
 }
 

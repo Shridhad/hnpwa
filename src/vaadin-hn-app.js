@@ -15,6 +15,13 @@ class VaadinHnApp extends PolymerElement {
         :host {
           display: block;
         }
+
+        #outlet {
+          width: 1100px;
+          max-width: 100%;
+          margin: auto;
+          background-color: #f0f3f7;
+        }
       </style>
       <div class="main">
         <hn-header-view></hn-header-view>

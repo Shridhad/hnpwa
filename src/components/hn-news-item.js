@@ -42,7 +42,9 @@ class HNNewsItem extends PolymerElement {
             }
 
           </style>
-          <span class="index">[[_index(index)]]</span>
+          <template is="dom-if" if="[[!hideIndex]]">
+            <span class="index">[[_index(index)]]</span>
+          </template>
           <div class="item-title">
             <a href="[[_getUrl(item.url)]]" rel="noopener" target="_blank">[[item.title]]</a>
           </div>
@@ -55,15 +57,18 @@ class HNNewsItem extends PolymerElement {
               <a href="[[_userProfile(item.user)]]" target="_blank" rel="noopener">[[item.user]]</a>
             </template>
             <span class="time">[[item.time_ago]]</span>
-            <span class="comments">[[item.comments_count]] comments</span>
+            <a class="comments" href$="/item/[[item.id]]">[[item.comments_count]] comments</a>
           </div>
         `;
   }
   
   static get properties() {
     return {
-      item: {
-        type: Object
+      item: Object,
+      index: Number,
+      hideIndex: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -80,8 +85,8 @@ class HNNewsItem extends PolymerElement {
     return value == null;
   }
 
-  _getUrl(url) {
-    return url.startsWith("item") ? `https://news.ycombinator.com/${url}` : url;
+  _getUrl(url, id) {
+    return url.startsWith("item") ? `/item/${id}` : url;
   }
 }
 

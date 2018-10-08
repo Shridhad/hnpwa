@@ -9,10 +9,8 @@ class HNNewsList extends PolymerElement {
           <style>
             :host {
               display: block;
-              width: 1100px;
               height: 90vh;
               margin: 0 auto;
-              max-width: 100%;
             }
     
             vaadin-grid {
