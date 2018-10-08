@@ -8,8 +8,6 @@ class HNComment extends PolymerElement {
               display: block;
               font-size: 0.95rem;
               margin-top: 1rem;
-              border-left: 1px solid rgba(0, 0, 0, 0.1);
-              padding-left: 0.5rem;
             }
 
             .comment-meta {
@@ -23,6 +21,8 @@ class HNComment extends PolymerElement {
 
             .content {
                 margin: 0;
+                padding-left: 0.5rem;
+                border-left: 1px solid rgba(0, 0, 0, 0.1);
             }
 
             .content p {
@@ -32,6 +32,11 @@ class HNComment extends PolymerElement {
             .content a {
                 color: inherit;
             }
+
+            .comments {
+                padding-left: 1rem;
+            }
+
           </style>
           <div class="comment-view">
             <div class="comment-meta">
@@ -42,6 +47,11 @@ class HNComment extends PolymerElement {
                 <span class="time">[[comment.time_ago]]</span>
             </div>
             <p class="content" inner-h-t-m-l="[[comment.content]]"></p>
+            <div class="comments">
+                <template is="dom-repeat" items="[[comment.comments]]">
+                    <hn-comment comment="[[item]]"></hn-comment>
+                </template>
+            </div>
           </div>
         `;
   }

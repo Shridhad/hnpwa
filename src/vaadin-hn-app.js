@@ -21,6 +21,7 @@ class VaadinHnApp extends PolymerElement {
           max-width: 100%;
           margin: auto;
           background-color: #f0f3f7;
+          padding-bottom: 2rem;
         }
       </style>
       <div class="main">
