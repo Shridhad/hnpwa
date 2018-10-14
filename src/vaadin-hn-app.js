@@ -2,7 +2,6 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {Router} from '@vaadin/router';
 import './components/hn-header-view';
 import './components/hn-news-list';
-import './components/hn-item-view';
 
 /**
  * @customElement
@@ -44,7 +43,25 @@ class VaadinHnApp extends PolymerElement {
       {path: '/jobs', component: 'hn-news-list'},
       {path: '/item/:id', component: 'hn-item-view'}
     ])
+  }
 
+  connectedCallback() {
+    super.connectedCallback();
+
+    this._lazyLoad();
+  }
+
+  _lazyLoad() {
+    if (this.loadComplete) {
+      return true;
+    }
+    import('./lazy-resources.js').then(() => {
+      // Register service worker if supported.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js', {scope: '/'});
+      }
+      this.loadComplete = true;
+    });
   }
 }
 

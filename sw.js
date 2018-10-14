@@ -14,6 +14,10 @@ workbox.routing.registerRoute(
     new RegExp('.*\.js'),
     workbox.strategies.networkFirst()
 );
+workbox.routing.registerRoute(
+    new RegExp('images\/.*\.*'),
+    workbox.strategies.networkFirst()
+);
 
 workbox.precaching.precacheAndRoute([
     '/',
