@@ -58,7 +58,7 @@ class VaadinHnApp extends PolymerElement {
     import('./lazy-resources.js').then(() => {
       // Register service worker if supported.
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js', {scope: '/'});
+        navigator.serviceWorker.register('service-worker.js', {scope: '/'});
       }
       this.loadComplete = true;
     });

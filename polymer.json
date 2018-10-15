@@ -1,15 +1,20 @@
 {
   "npm": true,
   "entrypoint": "index.html",
+  "shell": "src/vaadin-hn-app.js",
   "lint": {
     "rules": [
       "polymer-3"
     ]
   },
+  "sources": [
+    "images/**/*"
+  ],
+  "moduleResolution": "node",
   "extraDependencies": [
     "manifest.json",
-    "sw.js",
-    "images/**"
+    "node_modules/normalize.css/**",
+    "node_modules/@webcomponents/webcomponentsjs/**"
   ],
   "builds": [
     {"preset": "es6-bundled"}
