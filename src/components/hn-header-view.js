@@ -10,7 +10,7 @@ class HNHeaderView extends PolymerElement {
         :host {
           display: block;
           background-color: #2d3033;
-          padding: 0.5rem 0;
+          padding: 0.5rem;
         }
 
         .header {

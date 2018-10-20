@@ -9,13 +9,14 @@ class HNNewsList extends PolymerElement {
           <style>
             :host {
               display: block;
-              height: 90vh;
+              height: 95vh;
               margin: 0 auto;
             }
     
             vaadin-grid {
               height: 100%;
               border: none;
+              --lumo-base-color: #f0f3f7; 
             }
           </style>
           <vaadin-grid items="[[items]]">
@@ -33,7 +34,7 @@ class HNNewsList extends PolymerElement {
       items: {
         type: Array
       }
-    };
+    }
   }
 
   connectedCallback() {

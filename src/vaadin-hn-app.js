@@ -26,6 +26,7 @@ class VaadinHnApp extends PolymerElement {
       <div class="main">
         <hn-header-view></hn-header-view>
         <div id="outlet"></div>
+        <hn-offline-view></hn-offline-view>
       </div>
     `;
   }
