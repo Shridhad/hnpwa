@@ -57,7 +57,9 @@ class HNNewsItem extends PolymerElement {
               <a href="[[_userProfile(item.user)]]" target="_blank" rel="noopener">[[item.user]]</a>
             </template>
             <span class="time">[[item.time_ago]]</span>
-            <a class="comments" href$="/item/[[item.id]]">[[item.comments_count]] comments</a>
+            <template is="dom-if" if="[[_isNonZero(item.comments_count)]]">
+              <a class="comments" href$="/item/[[item.id]]">[[item.comments_count]] comments</a>
+            </template>
           </div>
         `;
   }
@@ -83,6 +85,10 @@ class HNNewsItem extends PolymerElement {
 
   _isNull(value) {
     return value == null;
+  }
+
+  _isNonZero(count) {
+    return count !== 0;
   }
 
   _getUrl(url, id) {
