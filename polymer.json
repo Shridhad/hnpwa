@@ -13,6 +13,7 @@
   "moduleResolution": "node",
   "extraDependencies": [
     "manifest.json",
+    "app.yaml",
     "node_modules/normalize.css/**",
     "node_modules/@webcomponents/webcomponentsjs/**"
   ],
