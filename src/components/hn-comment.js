@@ -63,6 +63,14 @@ class HNComment extends PolymerElement {
       }
     };
   }
+
+    _userProfile(user) {
+        return `https://news.ycombinator.com/user?id=${user}`;
+    }
+
+    _isNull(value) {
+        return value == null;
+    }
 }
 
 window.customElements.define('hn-comment', HNComment);

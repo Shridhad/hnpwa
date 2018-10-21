@@ -8,7 +8,6 @@
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@vaadin/router": "^1.1.0",
-    "@vaadin/vaadin-core": "^10.0.0-pre.3",
     "normalize.css": "^8.0.0",
     "polymer-cli": "^1.8.0",
     "serve": "^10.0.1"

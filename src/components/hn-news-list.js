@@ -1,7 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@polymer/polymer/lib/elements/dom-repeat.js'
 import {fetchItems} from '../data/hn-api';
-import './hn-news-item';
 
 class HNNewsList extends PolymerElement {
   static get template() {
@@ -9,36 +8,33 @@ class HNNewsList extends PolymerElement {
           <style>
             :host {
               display: block;
-              height: 95vh;
               margin: 0 auto;
             }
     
-            vaadin-grid {
-              height: 100%;
-              border: none;
-              --lumo-base-color: #f0f3f7; 
+            hn-news-item {
+              margin-left: 1rem;
+              border-bottom: 1px solid hsla(214, 53%, 23%, 0.16);
             }
           </style>
-          <vaadin-grid items="[[items]]">
-            <vaadin-grid-column>
-              <template>
-                <hn-news-item item="[[item]]" index="[[index]]"></hn-news-item>
-              </template>
-            </vaadin-grid-column>
-          </vaadin-grid>
+          <div class="news-list">
+            <template is="dom-repeat" items="[[items]]" mutable-data>
+              <hn-news-item item="[[item]]" index="[[index]]"></hn-news-item>
+            </template>
+          </div>
         `;
   }
 
   static get properties() {
     return {
       items: {
-        type: Array
+        type: Array,
+        value: []
       }
     }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
 
     let type =  this.getType(this.location.pathname);
     fetchItems(type)

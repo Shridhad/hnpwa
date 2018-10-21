@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/polymer/lib/elements/dom-if.js'
 
 class HNNewsItem extends PolymerElement {
   static get template() {
@@ -6,7 +7,7 @@ class HNNewsItem extends PolymerElement {
           <style>
             :host {
               display: block;
-              padding: 0.2rem 0.5rem;
+              padding: 0.5rem 0.5rem;
               position: relative;
               padding-left: 40px;
               white-space: normal;
