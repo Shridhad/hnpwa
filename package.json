@@ -3,7 +3,7 @@
   "description": "Hacker News Demo PWA using vaadin components",
   "scripts": {
     "prestart": "polymer build",
-    "start": "PORT=3000 serve build/es6-bundled"
+    "start": "PORT=8080 serve build/es6-bundled"
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",

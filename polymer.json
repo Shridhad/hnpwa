@@ -17,6 +17,7 @@
     "node_modules/normalize.css/**",
     "node_modules/@webcomponents/webcomponentsjs/**"
   ],
+  "componentDir": "node_modules/",
   "builds": [
     {"preset": "es6-bundled"}
   ]
