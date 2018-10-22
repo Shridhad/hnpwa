@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 class HNOfflineView extends PolymerElement {
   static get template() {
@@ -45,9 +46,11 @@ class HNOfflineView extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
 
-    window.addEventListener("online", this.handleNetworkChange.bind(this));  
-    window.addEventListener("offline", this.handleNetworkChange.bind(this));  
-    window.addEventListener("load", this.handleNetworkChange.bind(this));  
+    afterNextRender(this, () => {
+      window.addEventListener("online", this.handleNetworkChange.bind(this));  
+      window.addEventListener("offline", this.handleNetworkChange.bind(this));  
+      window.addEventListener("load", this.handleNetworkChange.bind(this));  
+    }); 
   }
 
   handleNetworkChange() {

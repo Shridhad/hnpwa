@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import {Router} from '@vaadin/router';
 import './components/hn-header-view';
 import './components/hn-news-list';
@@ -56,12 +57,14 @@ class VaadinHnApp extends PolymerElement {
     if (this.loadComplete) {
       return true;
     }
-    import('./lazy-resources.js').then(() => {
-      // Register service worker if supported.
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js', {scope: '/'});
-      }
-      this.loadComplete = true;
+    afterNextRender(this, () => {
+      import('./lazy-resources.js').then(() => {
+        // Register service worker if supported.
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js', {scope: '/'});
+        }
+        this.loadComplete = true;
+      });
     });
   }
 }

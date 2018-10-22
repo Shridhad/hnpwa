@@ -11,7 +11,11 @@
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/images/favicon.ico">
+
+    <link rel="preload" href="src/vaadin-hn-app.js" as="script">
+
     <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
+    <link rel="dns-prefetch" href="https://node-hnapi.herokuapp.com">
 
     <style>
       body {
