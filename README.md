@@ -1,6 +1,6 @@
 # \<vaadin-hn\>
 
-Hacker News Demo PWA using vaadin components
+Hacker News Demo PWA using Vaadin components
 
 ## Install the Polymer-CLI
 
